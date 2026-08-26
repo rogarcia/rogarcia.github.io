@@ -7,45 +7,85 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
   <style>
     :root {
-      --text: #1a1a1a;
-      --muted: #6a6a6a;
-      --link: #0645ad;
-      --bg: #ffffff;
-      --rule: #e5e5e5;
+      --text: #22201d;
+      --muted: #7d786f;
+      --link: #1651a0;
+      --bg: #faf9f6;
+      --rule: #e8e5df;
+      --code-bg: #f1efe9;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --text: #d6d6d6;
-        --muted: #8a8a8a;
-        --link: #8ab4f8;
-        --bg: #121212;
-        --rule: #2a2a2a;
+        --text: #d9d6d0;
+        --muted: #918c84;
+        --link: #92b4e3;
+        --bg: #161513;
+        --rule: #2c2a26;
+        --code-bg: #211f1c;
       }
     }
     * { box-sizing: border-box; }
+    html { height: 100%; }
     body {
+      min-height: 100%;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
-      max-width: 42rem;
-      font: 17px/1.6 Georgia, 'Times New Roman', serif;
+      padding: 3rem 1.25rem 2rem;
+      max-width: 41rem;
+      display: flex;
+      flex-direction: column;
+      font: 18px/1.7 Georgia, 'Times New Roman', serif;
       color: var(--text);
       background: var(--bg);
+      text-rendering: optimizeLegibility;
     }
-    a { color: var(--link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header.site { margin-bottom: 2.5rem; }
-    header.site h1 { font-size: 1.2rem; margin: 0; display: inline; }
-    header.site nav { display: inline; margin-left: 0.75rem; color: var(--muted); }
-    h1, h2, h3 { line-height: 1.25; }
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
+    }
+    a:hover { text-decoration-color: var(--link); }
+    header.site {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    header.site .name {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--text);
+      text-decoration: none;
+    }
+    header.site .name:hover { text-decoration: underline; }
+    header.site nav {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    header.site nav a { color: var(--muted); text-decoration: none; }
+    header.site nav a:hover { color: var(--text); }
+    main { flex: 1; }
+    h1, h2, h3 { line-height: 1.3; }
+    article h1 { font-size: 1.7rem; margin: 0 0 0.35rem; }
+    article > time {
+      display: block;
+      margin-bottom: 2rem;
+      font: 0.85rem ui-monospace, 'SF Mono', Menlo, monospace;
+      color: var(--muted);
+    }
+    article p, article li { max-width: 38rem; }
     time, .muted { color: var(--muted); }
-    hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+    hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
     pre {
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1rem;
       overflow-x: auto;
-      background: rgba(127,127,127,0.1);
-      border-radius: 4px;
+      background: var(--code-bg);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
     }
-    code { font: 0.9em/1.5 ui-monospace, 'SF Mono', Menlo, monospace; }
+    code { font: 0.85em/1.6 ui-monospace, 'SF Mono', Menlo, monospace; }
     blockquote {
       margin: 0;
       padding-left: 1rem;
@@ -53,22 +93,49 @@
       color: var(--muted);
     }
     img { max-width: 100%; }
-    ul.posts { list-style: none; padding: 0; }
-    ul.posts li { margin-bottom: 0.4rem; }
-    ul.posts time {
-      font: 0.85em ui-monospace, 'SF Mono', Menlo, monospace;
-      margin-right: 0.75rem;
+    .intro {
+      margin: 0 0 2.5rem;
+      color: var(--muted);
+      font-style: italic;
     }
+    ul.posts { list-style: none; padding: 0; margin: 0; }
+    ul.posts li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    ul.posts li:last-child { border-bottom: 0; }
+    ul.posts time {
+      flex: none;
+      font: 0.8rem ui-monospace, 'SF Mono', Menlo, monospace;
+    }
+    ul.posts a { color: var(--text); text-decoration: none; }
+    ul.posts a:hover { color: var(--link); text-decoration: underline; }
+    footer.site {
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    footer.site a { color: var(--muted); }
   </style>
 </head>
 <body>
   <header class="site">
-    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <a class="name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
     <nav>
-      <a href="{{ '/about/' | relative_url }}">about</a> ·
+      <a href="{{ '/about/' | relative_url }}">about</a> &middot;
       <a href="{{ '/feed.xml' | relative_url }}">rss</a>
     </nav>
   </header>
+  <main>
   {{ content }}
+  </main>
+  <footer class="site">
+    &copy; {{ 'now' | date: "%Y" }} {{ site.author }} &middot; <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+  </footer>
 </body>
 </html>

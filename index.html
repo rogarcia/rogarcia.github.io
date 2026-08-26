@@ -1,6 +1,10 @@
 ---
 layout: default
 ---
+<p class="intro">{{ site.description }}</p>
+{% if site.posts.size == 0 %}
+<p class="muted">Nothing here yet &mdash; first post is on its way.</p>
+{% else %}
 <ul class="posts">
   {% for post in site.posts %}
   <li>
@@ -9,3 +13,4 @@ layout: default
   </li>
   {% endfor %}
 </ul>
+{% endif %}
