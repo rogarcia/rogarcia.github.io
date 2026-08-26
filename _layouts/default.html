@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+  <style>
+    :root {
+      --text: #1a1a1a;
+      --muted: #6a6a6a;
+      --link: #0645ad;
+      --bg: #ffffff;
+      --rule: #e5e5e5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #d6d6d6;
+        --muted: #8a8a8a;
+        --link: #8ab4f8;
+        --bg: #121212;
+        --rule: #2a2a2a;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+      max-width: 42rem;
+      font: 17px/1.6 Georgia, 'Times New Roman', serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header.site { margin-bottom: 2.5rem; }
+    header.site h1 { font-size: 1.2rem; margin: 0; display: inline; }
+    header.site nav { display: inline; margin-left: 0.75rem; color: var(--muted); }
+    h1, h2, h3 { line-height: 1.25; }
+    time, .muted { color: var(--muted); }
+    hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+    pre {
+      padding: 0.75rem 1rem;
+      overflow-x: auto;
+      background: rgba(127,127,127,0.1);
+      border-radius: 4px;
+    }
+    code { font: 0.9em/1.5 ui-monospace, 'SF Mono', Menlo, monospace; }
+    blockquote {
+      margin: 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--rule);
+      color: var(--muted);
+    }
+    img { max-width: 100%; }
+    ul.posts { list-style: none; padding: 0; }
+    ul.posts li { margin-bottom: 0.4rem; }
+    ul.posts time {
+      font: 0.85em ui-monospace, 'SF Mono', Menlo, monospace;
+      margin-right: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    <nav>
+      <a href="{{ '/about/' | relative_url }}">about</a> ·
+      <a href="{{ '/feed.xml' | relative_url }}">rss</a>
+    </nav>
+  </header>
+  {{ content }}
+</body>
+</html>

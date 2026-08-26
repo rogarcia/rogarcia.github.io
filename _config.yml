@@ -1,0 +1,14 @@
+title: Rodrigo Garcia
+description: Notes on software, systems, and whatever I'm building.
+url: "https://rogarcia.github.io"
+author: Rodrigo Garcia
+
+permalink: /blog/:title/
+
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
